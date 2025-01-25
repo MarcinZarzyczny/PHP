@@ -1,0 +1,5 @@
+
+   To jest mój piękny wiersz
+   o wszystkim, co mi się podoba!
+   Kolejne linie są dla Ciebie!
+    EOT
