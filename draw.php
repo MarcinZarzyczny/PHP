@@ -30,19 +30,19 @@ if (is_file($filename)) // czy plik istnieje?
    while(!feof($file)) // czy koniec pliku?
    {
       $data = fgets($file); // pobierz linię tekstu z pliku
+      //print($data);
+      //echo"</br>";
       if ($data ) { // czy zmienna coś zawiera?
          $pos = mb_strpos($data, ".");
          if ($pos !== false) {
             // zdekoduj z formatu tekstowego do tablicy
             $t1 = explode(" ", $data); // znak podziału — spacja
             $t2 = explode (".", $t1[1]); // znak podziału — kropka
-            // wstawienie danych do tablicy 3-wymiarowej
-            // ([rok][miesiąc][dzień])
             $table[$t2[2]][$t2[1]][$t2[0]] = $t1[2];
             }
          }
       }
-      flock($file, LOCK_UN); 
+      flock($file, LOCK_UN);
    }
    else // plik jest już zablokowany
    {
@@ -51,12 +51,12 @@ if (is_file($filename)) // czy plik istnieje?
 
    fclose($file); // zamknięcie pliku
  }
+
 foreach($table as $year => $months){
    foreach($months as $month => $days){
       foreach($days as $day => $numbers){//wybierania numerów do spawdzenia
          $tablica = explode(",", $numbers);//zamiana stringa na tablicę 
-         //Sprawdzenie, czy w tablicy są szukane liczby.
-         if (( myNumber($tablica, "1") === true) && ( myNumber($tablica, "4") === true) && ( myNumber($tablica, "5") === true)){
+         if (( myNumber($tablica, "10") === true) && ( myNumber($tablica, "20") === true) && ( myNumber($tablica, "30") === true)){
          //Jeśli zestaw liczb został odnaleziony wyświetl dane losowania.    
             echo '<pre style="font-family: monospace; background-color: #f9f9f9; padding: 10px; border: 1px solid #ccc;">';
             print   $day. "." . $month . "." .$year;//data
